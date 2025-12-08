@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LibraryAuth from './LibraryAuth';
 import LibraryBooks from './LibraryBooks';
 import AdminDashboard from './AdminDashboard';
+import AdminLoans from './AdminLoans';
+import MyLoans from './MyLoans';
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LibraryAuth />} />
         <Route path="/books" element={<ProtectedRoute><LibraryBooks /></ProtectedRoute>} />
+        <Route path="/my-loans" element={<ProtectedRoute><MyLoans /></ProtectedRoute>} />
         <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/loans" element={<AdminRoute><AdminLoans /></AdminRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
