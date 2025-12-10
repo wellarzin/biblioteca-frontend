@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookMarked, LogOut, User, ClipboardList } from 'lucide-react';
+import { BookMarked, LogOut, User, ClipboardList, Calendar as CalendarIcon } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
@@ -32,16 +32,25 @@ export default function Header({ userName }: HeaderProps) {
 
         <div className="flex items-center gap-4">
           {!isAdmin && location.pathname === '/books' && (
-            <button
-              onClick={() => navigate('/my-loans')}
-              className="flex items-center gap-2 px-4 py-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
-            >
-              <ClipboardList className="w-5 h-5" />
-              <span>Minhas Propostas</span>
-            </button>
+            <>
+              <button
+                onClick={() => navigate('/calendar')}
+                className="flex items-center gap-2 px-4 py-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+              >
+                <CalendarIcon className="w-5 h-5" />
+                <span>Calendário</span>
+              </button>
+              <button
+                onClick={() => navigate('/my-loans')}
+                className="flex items-center gap-2 px-4 py-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+              >
+                <ClipboardList className="w-5 h-5" />
+                <span>Minhas Propostas</span>
+              </button>
+            </>
           )}
           
-          {!isAdmin && location.pathname === '/my-loans' && (
+          {!isAdmin && (location.pathname === '/my-loans' || location.pathname === '/calendar') && (
             <button
               onClick={() => navigate('/books')}
               className="flex items-center gap-2 px-4 py-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
